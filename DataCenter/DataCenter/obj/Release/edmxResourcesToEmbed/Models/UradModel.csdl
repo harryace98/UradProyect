@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Urad_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CONFIGURACION_NODOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODIGONODO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="F0" Type="Int32" Nullable="false" />
+    <Property Name="BW" Type="Int32" Nullable="false" />
+    <Property Name="NS" Type="Int32" Nullable="false" />
+    <Property Name="NTAR" Type="Int32" Nullable="false" />
+    <Property Name="MTH" Type="Int32" Nullable="false" />
+    <Property Name="RMAX" Type="Int32" Nullable="false" />
+    <Property Name="ALPHA" Type="Int32" Nullable="false" />
+    <Property Name="MOVIMIENTO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="NODOS" Relationship="Self.FK_Configuracion_Nodos_Nodos" FromRole="CONFIGURACION_NODOS" ToRole="NODOS" />
+  </EntityType>
+  <EntityType Name="ENTRADADATO">
+    <Key>
+      <PropertyRef Name="CODIGOENTRADADATO" />
+    </Key>
+    <Property Name="CODIGOENTRADADATO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODIGONODO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VELOCIDAD" Type="Single" />
+    <Property Name="SNR" Type="Single" />
+    <Property Name="HORAENTRADA" Type="DateTime" />
+    <Property Name="TIMESPAN" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="NODOS" Relationship="Self.FK_ENTRADADATO_NODOS" FromRole="ENTRADADATO" ToRole="NODOS" />
+  </EntityType>
+  <EntityType Name="ERRORLOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDEQUIPO" Type="Int32" Nullable="false" />
+    <Property Name="CODIGOERROR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MENSAJE_ERROR" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DATOS_ERROR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TIMESPAN" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="NODOS">
+    <Key>
+      <PropertyRef Name="CODIGONODO" />
+    </Key>
+    <Property Name="CODIGONODO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE_NODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IDEQUIPO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UBICACION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIMESPAN" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="CONFIGURACION_NODOS" Relationship="Self.FK_Configuracion_Nodos_Nodos" FromRole="NODOS" ToRole="CONFIGURACION_NODOS" />
+    <NavigationProperty Name="ENTRADADATO" Relationship="Self.FK_ENTRADADATO_NODOS" FromRole="NODOS" ToRole="ENTRADADATO" />
+  </EntityType>
+  <Association Name="FK_Configuracion_Nodos_Nodos">
+    <End Role="NODOS" Type="Self.NODOS" Multiplicity="1" />
+    <End Role="CONFIGURACION_NODOS" Type="Self.CONFIGURACION_NODOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NODOS">
+        <PropertyRef Name="CODIGONODO" />
+      </Principal>
+      <Dependent Role="CONFIGURACION_NODOS">
+        <PropertyRef Name="CODIGONODO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ENTRADADATO_NODOS">
+    <End Role="NODOS" Type="Self.NODOS" Multiplicity="1" />
+    <End Role="ENTRADADATO" Type="Self.ENTRADADATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NODOS">
+        <PropertyRef Name="CODIGONODO" />
+      </Principal>
+      <Dependent Role="ENTRADADATO">
+        <PropertyRef Name="CODIGONODO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Urad_DBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CONFIGURACION_NODOS" EntityType="Self.CONFIGURACION_NODOS" />
+    <EntitySet Name="ENTRADADATO" EntityType="Self.ENTRADADATO" />
+    <EntitySet Name="ERRORLOG" EntityType="Self.ERRORLOG" />
+    <EntitySet Name="NODOS" EntityType="Self.NODOS" />
+    <AssociationSet Name="FK_Configuracion_Nodos_Nodos" Association="Self.FK_Configuracion_Nodos_Nodos">
+      <End Role="NODOS" EntitySet="NODOS" />
+      <End Role="CONFIGURACION_NODOS" EntitySet="CONFIGURACION_NODOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ENTRADADATO_NODOS" Association="Self.FK_ENTRADADATO_NODOS">
+      <End Role="NODOS" EntitySet="NODOS" />
+      <End Role="ENTRADADATO" EntitySet="ENTRADADATO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

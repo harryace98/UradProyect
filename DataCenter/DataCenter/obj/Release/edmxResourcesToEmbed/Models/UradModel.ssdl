@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Urad_DBModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CONFIGURACION_NODOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGONODO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="F0" Type="int" Nullable="false" />
+    <Property Name="BW" Type="int" Nullable="false" />
+    <Property Name="NS" Type="int" Nullable="false" />
+    <Property Name="NTAR" Type="int" Nullable="false" />
+    <Property Name="MTH" Type="int" Nullable="false" />
+    <Property Name="RMAX" Type="int" Nullable="false" />
+    <Property Name="ALPHA" Type="int" Nullable="false" />
+    <Property Name="MOVIMIENTO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ENTRADADATO">
+    <Key>
+      <PropertyRef Name="CODIGOENTRADADATO" />
+    </Key>
+    <Property Name="CODIGOENTRADADATO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGONODO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="VELOCIDAD" Type="float" />
+    <Property Name="SNR" Type="float" />
+    <Property Name="HORAENTRADA" Type="datetime" Precision="0" />
+    <Property Name="TIMESPAN" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="ERRORLOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDEQUIPO" Type="int" Nullable="false" />
+    <Property Name="CODIGOERROR" Type="varchar" MaxLength="50" />
+    <Property Name="MENSAJE_ERROR" Type="varchar" MaxLength="200" />
+    <Property Name="DATOS_ERROR" Type="varchar" MaxLength="500" />
+    <Property Name="TIMESPAN" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="NODOS">
+    <Key>
+      <PropertyRef Name="CODIGONODO" />
+    </Key>
+    <Property Name="CODIGONODO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NOMBRE_NODO" Type="varchar" MaxLength="100" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" />
+    <Property Name="IDEQUIPO" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="UBICACION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TIMESPAN" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="FK_Configuracion_Nodos_Nodos">
+    <End Role="NODOS" Type="Self.NODOS" Multiplicity="1" />
+    <End Role="CONFIGURACION_NODOS" Type="Self.CONFIGURACION_NODOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NODOS">
+        <PropertyRef Name="CODIGONODO" />
+      </Principal>
+      <Dependent Role="CONFIGURACION_NODOS">
+        <PropertyRef Name="CODIGONODO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ENTRADADATO_NODOS">
+    <End Role="NODOS" Type="Self.NODOS" Multiplicity="1" />
+    <End Role="ENTRADADATO" Type="Self.ENTRADADATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NODOS">
+        <PropertyRef Name="CODIGONODO" />
+      </Principal>
+      <Dependent Role="ENTRADADATO">
+        <PropertyRef Name="CODIGONODO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Urad_DBModelStoreContainer">
+    <EntitySet Name="CONFIGURACION_NODOS" EntityType="Self.CONFIGURACION_NODOS" Schema="Urad_DB" store:Type="Tables" />
+    <EntitySet Name="ENTRADADATO" EntityType="Self.ENTRADADATO" Schema="Urad_DB" store:Type="Tables" />
+    <EntitySet Name="ERRORLOG" EntityType="Self.ERRORLOG" Schema="Urad_DB" store:Type="Tables" />
+    <EntitySet Name="NODOS" EntityType="Self.NODOS" Schema="Urad_DB" store:Type="Tables" />
+    <AssociationSet Name="FK_Configuracion_Nodos_Nodos" Association="Self.FK_Configuracion_Nodos_Nodos">
+      <End Role="NODOS" EntitySet="NODOS" />
+      <End Role="CONFIGURACION_NODOS" EntitySet="CONFIGURACION_NODOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ENTRADADATO_NODOS" Association="Self.FK_ENTRADADATO_NODOS">
+      <End Role="NODOS" EntitySet="NODOS" />
+      <End Role="ENTRADADATO" EntitySet="ENTRADADATO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

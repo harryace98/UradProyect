@@ -1,0 +1,228 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+body {
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.titulo {
+    border: 1px solid #e7e7e7;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    margin-bottom:30px;
+}
+
+/* Toggle Styles */
+
+#viewport {
+    padding-left: 60px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#content {
+    width: 100%;
+    position: relative;
+    margin-right: 0;
+}
+
+.targetas{
+    margin-bottom:15px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4,2fr);
+    border: 1px solid #e7e7e7;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+}
+
+.graficos-container {
+    border: 1px solid #e7e7e7;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+}
+#myChart{
+    margin:5px;
+}
+
+
+@media (max-width: 820px) {
+    .cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+}
+@media (max-width: 576px) {
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+
+.span3{
+    padding-inline:10px;
+    
+}
+.widget {
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-image: url(/Images/gauge.png);
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-blend-mode: soft-light;
+}
+
+    .widget h2, .widget h3 {
+        font-size: 30px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+
+.info-box {
+    display: block;
+    min-height: 90px;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.info-box-icon {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+    display: block;
+    float: left;
+    height: 90px;
+    width: 90px;
+    text-align: center;
+    font-size: 45px;
+    line-height: 90px;
+    background: rgba(0,0,0,0.2);
+}
+
+.info-box-content {
+    padding: 5px 10px;
+    margin-left: 90px;
+}
+
+.info-box-text {
+    text-transform: uppercase;
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-box-number {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navy-bg, .bg-primary {
+    background-color: #1ab394;
+    color: #ffffff;
+}
+
+.lazur-bg, .bg-info {
+    background-color: #23c6c8;
+    color: #ffffff;
+}
+
+.yellow-bg, .bg-warning {
+    background-color: #f8ac59;
+    color: #ffffff;
+}
+
+.red-bg, .bg-danger {
+    background-color: #ED5565;
+    color: #ffffff;
+}
+
+.bg-aqua, .aqua-bg {
+    background-color: #00c0ef !important;
+}
+
+.bg-green, .green-bg {
+    background-color: #00a65a !important;
+}
+
+.bg-red {
+    background-color: #ED5565 !important;
+}
+
+.bg-navy {
+    background-color: #1ab394 !important;
+}
+
+.gray-bg, .bg-muted {
+    background-color: #f3f3f4;
+}
+
+.ibox {
+    clear: both;
+    margin-bottom: 25px;
+    margin-top: 0;
+    padding: 0;
+}
+
+.ibox-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #ffffff;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 2px 0 0;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 15px 15px 7px;
+    min-height: 48px;
+}
+
+.ibox-content {
+    background-color: #ffffff;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+    clear: both;
+}
+table th {
+    background-color: #337ab7 !important;
+    color: white;
+}
+
+table > tbody > tr > td {
+    vertical-align: middle !important;
+}
+
+/*para alinear los botones y cuadro de busqueda*/
+.btn-group, .btn-group-vertical {
+    position: absolute !important;
+}
+
+
+
+
+
+
+

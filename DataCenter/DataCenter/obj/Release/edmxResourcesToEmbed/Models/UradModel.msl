@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Urad_DBModelStoreContainer" CdmEntityContainer="Urad_DBEntities1">
+    <EntitySetMapping Name="CONFIGURACION_NODOS">
+      <EntityTypeMapping TypeName="Urad_DBModel.CONFIGURACION_NODOS">
+        <MappingFragment StoreEntitySet="CONFIGURACION_NODOS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CODIGONODO" ColumnName="CODIGONODO" />
+          <ScalarProperty Name="F0" ColumnName="F0" />
+          <ScalarProperty Name="BW" ColumnName="BW" />
+          <ScalarProperty Name="NS" ColumnName="NS" />
+          <ScalarProperty Name="NTAR" ColumnName="NTAR" />
+          <ScalarProperty Name="MTH" ColumnName="MTH" />
+          <ScalarProperty Name="RMAX" ColumnName="RMAX" />
+          <ScalarProperty Name="ALPHA" ColumnName="ALPHA" />
+          <ScalarProperty Name="MOVIMIENTO" ColumnName="MOVIMIENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENTRADADATO">
+      <EntityTypeMapping TypeName="Urad_DBModel.ENTRADADATO">
+        <MappingFragment StoreEntitySet="ENTRADADATO">
+          <ScalarProperty Name="CODIGOENTRADADATO" ColumnName="CODIGOENTRADADATO" />
+          <ScalarProperty Name="CODIGONODO" ColumnName="CODIGONODO" />
+          <ScalarProperty Name="VELOCIDAD" ColumnName="VELOCIDAD" />
+          <ScalarProperty Name="SNR" ColumnName="SNR" />
+          <ScalarProperty Name="HORAENTRADA" ColumnName="HORAENTRADA" />
+          <ScalarProperty Name="TIMESPAN" ColumnName="TIMESPAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERRORLOG">
+      <EntityTypeMapping TypeName="Urad_DBModel.ERRORLOG">
+        <MappingFragment StoreEntitySet="ERRORLOG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDEQUIPO" ColumnName="IDEQUIPO" />
+          <ScalarProperty Name="CODIGOERROR" ColumnName="CODIGOERROR" />
+          <ScalarProperty Name="MENSAJE_ERROR" ColumnName="MENSAJE_ERROR" />
+          <ScalarProperty Name="DATOS_ERROR" ColumnName="DATOS_ERROR" />
+          <ScalarProperty Name="TIMESPAN" ColumnName="TIMESPAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NODOS">
+      <EntityTypeMapping TypeName="Urad_DBModel.NODOS">
+        <MappingFragment StoreEntitySet="NODOS">
+          <ScalarProperty Name="CODIGONODO" ColumnName="CODIGONODO" />
+          <ScalarProperty Name="NOMBRE_NODO" ColumnName="NOMBRE_NODO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="IDEQUIPO" ColumnName="IDEQUIPO" />
+          <ScalarProperty Name="UBICACION" ColumnName="UBICACION" />
+          <ScalarProperty Name="TIMESPAN" ColumnName="TIMESPAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

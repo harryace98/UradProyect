@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div id="viewport">
+    <!-- Content -->
+    <div id="content">
+        <div class="container-fluid">
+            <nav class="navbar navbar-default titulo">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <div class="row">
+                                <div class="dropdown" id="DropdownNodo" style="margin:8px;">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Seleccione un Nodo:
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" id="DropdownData" aria-labelledby="dropdownMenu1">
+                                        <li><a href="/Home/Index/Nodo000">Nodo000</a></li>
+                                        <li><a href="/Home/Index/Nodo001">Nodo001</a></li>
+                                        <li><a href="/Home/Index/Nodo002">Nodo002</a></li>
+                                    </ul>
+
+                                </div>
+                                <h3 style="margin-block: auto;">@ViewBag.Nodos</h3>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                <i class="zmdi zmdi-notifications text-danger"></i>
+                            </a>
+                        </li>
+                        <li><a style="font-size: 28px; font-weight:500;" href="/Home/Index">Data Center Urad</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="titulo"> </div>
+
+
+            <h3>Velocidad Promedio (Km/h)</h3>
+            <div class="cards-container targetas">
+                <div class="span3">
+                    <div class="widget navy-bg">
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <i class="icon icon-search icon-white"></i>
+                            </div>
+                            <div class="span8 text-right">
+                                <span>Promedio Hora</span>
+                                <h2 id="CardHora" class="font-bold">
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="widget lazur-bg">
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <i class="icon icon-search icon-white"></i>
+                            </div>
+                            <div class="span8 text-right">
+                                <span>Promedio dia</span>
+                                <h2 id="CardDia" class="font-bold">
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="widget yellow-bg">
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <i class="icon icon-search icon-white"></i>
+                            </div>
+                            <div class="span8 text-right">
+                                <span>Promedio Semana</span>
+                                <h2 id="CardSemana" class="font-bold">
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="widget bg-danger">
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <i class="icon icon-search icon-white"></i>
+                            </div>
+                            <div class="span8 text-right">
+                                <span>Promedio Mes</span>
+                                <h2 id="CardMes" class="font-bold">
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <h3>Velocidad minuto a minuto</h3>
+            <div class="graficos-container targetas">
+                <div style="margin:10px;">
+                    <canvas id="LinarBarchart"></canvas>
+                </div>
+            </div>
+            <h3>Transito minuto a minuto</h3>
+            <div class="graficos-container targetas">
+                <div style="margin:10px;">
+                    <canvas id="transitBarchart"></canvas>
+                </div>
+            </div>
+            <h3>Ubicacion de los nodos</h3>
+            <div class="graficos-container targetas" style="display:flex;">
+                <iframe id="Mapa" src="https://www.google.com/maps/d/u/0/embed?mid=12oUlvr6gdI193o3eu-Qw3ZcYVxlcydeL&ehbc=2E312F" width="90%" height="480" style="margin-left: auto; margin-right: auto;"></iframe>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<link rel=StyleSheet href="~/Content/StylesDashboard.css" type="text/css">
+<script src="~/Scripts/ScriptDashboard.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(PantallaInicioInit());
+    
+</script>
